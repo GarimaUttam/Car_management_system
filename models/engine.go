@@ -12,15 +12,20 @@ type Engine struct {
 	NoOfCylinders int64     `json:"noOfCylinders"`
 	CarRange      int64     `json:"carRange"`
 }
+type EngineRequest struct {
+	Displacement  int64     `json:"displacement"`
+	NoOfCylinders int64     `json:"noOfCylinders"`
+	CarRange      int64     `json:"carRange"`
+}
 
 func  ValidateEngineRequest(EngineReq EngineRequest) error {
 	if err := validateDisplacement(EngineReq.Displacement); err != nil {
 		return err
 	}
-	if err := validateNoOfCylinders(EngineReq.noOfCylinders); err != nil {
+	if err := validateNoOfCylinders(EngineReq.NoOfCylinders); err != nil {
 		return err
 	}
-	if err := validateCarRange(EngineReq.carRange); err != nil {
+	if err := validateCarRange(EngineReq.CarRange); err != nil {
 		return err
 	}
 	return nil
