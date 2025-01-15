@@ -9,7 +9,7 @@ import (
 )
 
 type Car struct {
-	ID        uuid.UUID `json:"id`
+	ID       uuid.UUID `json:"id`
 	Name      string    `json:"name"`
 	Year      string    `json:"year"`
 	Brand     string    `json:"brand"`
@@ -55,29 +55,29 @@ func ValidateRequest(carReq CarRequest) error {
 
 func validateName(name string) error{
 	if name == ""{
-		return errors.New("Name is Required")
+		return errors.New("name is Required")
 	}
 	return nil
 }
 func validateYear(year string) error {
 	if year == "" {
-		return errors.New("Year is required")
+		return errors.New("year is required")
 	}
 	_, err := strconv.Atoi(year)
 	if err != nil {
-		return errors.New("Year must be a valid number")
+		return errors.New("year must be a valid number")
 	}
 	currentYear := time.Now().Year()
-	yearInt, _ := strconv.Atoi()
+	yearInt, _ := strconv.Atoi(year)
 	if yearInt < 1886 || yearInt > currentYear {
-		return errors.New("Year must me between 1886 and current year")
+		return errors.New("year must me between 1886 and current year")
 	}
 	return nil
 }
 
 func validatedBrand(brand string) error {
 	if brand == "" {
-		return errors.New("Brand is required")
+		return errors.New("brand is required")
 	}
 	return nil
 }
@@ -89,12 +89,12 @@ func validateFuelType(fuelType string) error{
 			return nil
 		}
 	}
-	return errors.New("FeulType must be one of : Petrol, Diesel, Electric, Hybrid")
+	return errors.New("feulType must be one of : Petrol, Diesel, Electric, Hybrid")
  }
 
  func validateEngine(engine Engine) error {
 	if engine.EngineID == uuid.Nil {
-		return errors.New("EngineId is required")
+		return errors.New("rngineId is required")
 	}
 	if engine.Displacement <= 0 {
 		return errors.New("displacement must be greater than zero")
