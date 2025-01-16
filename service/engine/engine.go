@@ -37,6 +37,16 @@ func (s *EngineService) CreateEngine(ctx context.Context, engineReq *models.Engi
 	return &createdEngine, nil
 }
 
+func (s *EngineService) UpdateEngine(ctx context.Context, id string, engineReq *models.EngineRequest) (*models.Engine, error,) {
+	if err := models.ValidateEngineRequest(*engineReq); err != nil {
+		return nil, err
+	}
+	updateEngine, err := s.store.EngineUpdate(ctx, id, engineReq)
+	if err != nil {
+		return nil, err
+	}
+	return &updateEngine, nil
+}
 func (s *EngineService) DeletedEngine(ctx context.Context, id string) (*models.Engine, error) {
 	deletedEngine, err := s.store.EngineDelete(ctx, id)
 	if err != nil {

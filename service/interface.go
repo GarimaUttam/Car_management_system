@@ -14,3 +14,9 @@ type CarServiceInterface interface {
 	DeleteCar(ctx context.Context, id string) (*models.Car, error) 
 }
 
+type EngineServiceInterface interface {
+	GetEngineByID(ctx context.Context,id string) (*models.Engine, error) 
+	CreateEngine(ctx context.Context, engineReq *models.EngineRequest) (*models.Engine, error)
+	UpdateEngine(ctx context.Context, id string, engineReq *models.EngineRequest) (*models.Engine, error,)
+	DeletedEngine(ctx context.Context, id string) (*models.Engine, error)
+}
